@@ -9,6 +9,14 @@ const getAllPlans = async (): Promise<IPlans[]> => {
   return plans;
 }
 
-const plansModel = {getAllPlans};
+const getById = async(id: number) : Promise<IPlans[]> => {
+  const [plan] = await connection.execute<RowDataPacket[] & IPlans[]>(`
+    SELECT * FROM Brunonet.plans WHERE id = ?
+  `,[id])
+
+  return plan;
+}
+
+const plansModel = {getAllPlans, getById};
 
 export default plansModel;

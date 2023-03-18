@@ -7,6 +7,12 @@ const getAllPlans = async (): Promise<IPlans[]> => {
   return plans;
 }
 
-const plansService = { getAllPlans };
+const getById =async (id: number) => {
+  const plan = await plansModel.getById(id);
+
+  return plan
+}
+
+const plansService = { getAllPlans, getById };
 
 export default plansService;

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { json, useNavigate } from 'react-router-dom';
 import MainContext from '../context/brunonetContext';
-import '../styles/coberturaStyle.css';
+import '../styles/coverageStyle.css';
 import Modal from 'react-modal'
 Modal.setAppElement('#root');
 
@@ -11,7 +11,7 @@ type Props =  {
   value: string
 }
 
-export default function Cobertura() {
+export default function Coverage() {
   const { cep, setCep} = useContext(MainContext);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [data, setData] =  React.useState<{message: string}>()
@@ -50,7 +50,7 @@ export default function Cobertura() {
   }
 
   return (
-    <div className="cobertura">
+    <div className="coverage">
       <div className="title">
         <h1>Verificação de Cobertura</h1>
         <p> Preencha o seu CEP que iremos verificar os planos disponíveis na sua localidade.</p>

@@ -4,7 +4,7 @@ import Home from './pages/home'
 import { Route, Routes } from 'react-router-dom';
 import BrunonetProvider from './context/brunonetProvider';
 import Plans from './pages/plans';
-
+import Car from './pages/car';
 
 function App() {
 
@@ -13,8 +13,8 @@ function App() {
       <Routes>
           <Route path='/plans' element={ <Plans />} />
           <Route  path='/' element={ <Home /> } />
-      </Routes>
-        
+          <Route path='/car' element={ <Car />} />
+      </Routes>   
     </BrunonetProvider>
   )
 }

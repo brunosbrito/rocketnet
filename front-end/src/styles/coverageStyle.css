@@ -1,22 +1,24 @@
-.cobertura {
-  background-color: grey;
-  border: 1px solid black;
+.coverage {
+  height: 250px;
   margin-top: 60px;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding-top: 30px;
 }
 
-.cobertura .title h1 {
+.coverage .title h1 {
   font-size: 1.5rem;
   text-align: center;
-  margin-top: 20px;
-}
-
-.cobertura .title p {
-  text-align: center;
-  margin-top: 5px;
-  color: white;
   margin-top: 10px;
 }
+
+.coverage .title p {
+  text-align: center;
+  margin-top: 5px;
+  color: grey;
+  margin-top: 10px;
+}
+
 .cep {
   display: flex;
   flex-direction: column;
@@ -27,10 +29,11 @@
 .cep label {
   font-size: 0.8rem;
   margin-top: 10px;
-  color: brown;
+  color: red;
 }
+
 .cep .cep-input {
-  background-color: grey;
+  background-color: white;
   width: 300px;
   border-bottom: 1px solid black;
 
@@ -48,6 +51,7 @@
   width: 300px;
   height: 30px;
   border-radius: 10px;
+  background-color: orange;
 }
 
 .modal {
@@ -71,9 +75,8 @@
   width: 60px;
   height: 40px;
   color: white;
-  background-color: rgb(11, 182, 224);
+  background-color: orange;
   margin-top: 20px;
-
 }
 
 .modal h1 {

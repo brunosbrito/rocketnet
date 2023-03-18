@@ -6,6 +6,7 @@ const registerClient = async (client: IClients) => {
 const clients = await connection.execute<ResultSetHeader>(`
   INSERT INTO Brunonet.clients (
     name,
+    cpf,
     rg,
     date_of_birth,
     tel,
@@ -16,8 +17,9 @@ const clients = await connection.execute<ResultSetHeader>(`
     city,
     cep,
     plan_id)
-  VALUES (?, ?, ?, ?, ?)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `, [client.name,
+    client.cpf,
     client.rg,
     client.date_of_birth,
     client.tel, client.email,

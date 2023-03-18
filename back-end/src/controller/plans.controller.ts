@@ -7,6 +7,14 @@ const getAllPlans = async (req: Request, res: Response) => {
   return res.status(200).json(plans);
 }
 
-const plansController = { getAllPlans };
+const getById =async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const numberId = +id;
+  const plan = await plansService.getById(numberId)
+  console.log(plan)
+  return res.status(201).json(plan)
+}
+
+const plansController = { getAllPlans, getById };
 
 export default plansController;

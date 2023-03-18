@@ -1,13 +1,13 @@
 import React from "react"
 import Header from "../components/header"
 import '../styles/homeStyle.css'
-import Cobertura from "./cobertura"
+import Coverage from "./coverage"
 
 function Home() {
   return (
     <div className="home">
       <Header />
-      <Cobertura />
+      <Coverage />
     </div>
   )
 }
