@@ -24,9 +24,6 @@ export default function Car() {
     getPlan(planId)
   },[])
 
-  console.log(dataPlan)
-    
-
   return (
     <div className="car">
       <Header />
@@ -35,7 +32,7 @@ export default function Car() {
         {dataPlan.map((plan) => (
           <div key={plan.id}>
             <div className="plan-speed">
-              <Gauge size={24} />
+              <Gauge size={32} />
               <p>{plan.speed} Mbps</p>
             </div>
             <p className="desc">{plan.description}</p>

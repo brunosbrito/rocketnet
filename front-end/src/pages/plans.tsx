@@ -6,18 +6,25 @@ import '../styles/plansStyle.css'
 import { Gauge } from "@phosphor-icons/react"
 import { useNavigate } from "react-router-dom";
 
+interface IButtonClickEvent extends React.MouseEvent<HTMLButtonElement> {
+  target: HTMLButtonElement & {
+    value: number;
+  }
+}
+
 export default function Plans() {
   const {dataPlans, planId, setPlanId} = React.useContext(MainContext)
   const navigate = useNavigate();
 
-  const getIdPlan = async (e: React.SyntheticEvent) => {
-    setPlanId(e.target.value)
+  const getIdPlan = async ({target}: IButtonClickEvent) => {
+    setPlanId(target.value)
     navigate('/car')
   };
 
   return (
-   <>
-      <Header />
+   <div >
+    <Header />
+    <div className="plans">
       {dataPlans.map((plan: IPlans) => (
         <div className='container' key={plan.id}>
           <div className="content">
@@ -31,6 +38,7 @@ export default function Plans() {
           <button onClick={getIdPlan} value={plan.id} type="button">Comprar</button>
         </div>
       ))}
-    </>
+    </div>
+  </div>
   )
 }

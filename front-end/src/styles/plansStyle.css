@@ -52,3 +52,26 @@
 .container button:hover {
   opacity: 1;
 }
+
+@media (min-width: 480px) {
+  .plans {
+    margin: 60px auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  
+  }
+  .container {
+    width: 350px;
+    height: 200px;
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-left: -10px;
+  }
+
+  .content .speed {
+    font-size: 1.7rem;
+  }
+}

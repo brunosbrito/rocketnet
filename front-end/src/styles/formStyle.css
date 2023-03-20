@@ -1,9 +1,8 @@
 form {
-  width: 70%;
-  height: 500px;
+  width: 60%;
   flex-direction: column;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: 20px auto;
 }
 
@@ -12,11 +11,61 @@ form label {
   justify-content:space-between;
   font-size: 1rem;
   font-weight: bold;
+  align-items: baseline;
+  color: gray;
   margin-top: 15px;
+
 }
 
 form input {
-  border: 1px solid;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
+form input:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+span {
+  font-size: 0.7rem;
+  color: red;
+  margin-top: 10px;
+}
+
+form .form-button {
+  margin: 30px auto;
   border-radius: 3px;
+  background-color: green;
+  width: 200px;
   height: 30px;
+  cursor: pointer;
+
+}
+
+@media (min-width: 480px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 200px;
+  }
+
+  input {
+    display: flex;
+    width: 100%;
+  }
+
+  form .form-button {
+    width: 50%;
+    height: 30px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  form .form-button:hover {
+    opacity: 1;
+  }
+
 }

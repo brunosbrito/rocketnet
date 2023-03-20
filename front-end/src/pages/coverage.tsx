@@ -22,7 +22,7 @@ export default function Coverage() {
     setIsOpen(false);
     if(data?.message === 'CEP APROVADO'){
     navigate('/plans')
-  }
+    }
   }
 
   const handleChange = ( {target}:React.ChangeEvent<HTMLInputElement>) => {
@@ -68,11 +68,10 @@ export default function Coverage() {
         onRequestClose={closedModal}
         contentLabel="Modal"
       > 
-      <div className='content'>
-        <h1 >{data?.message.toUpperCase()}</h1>
-        <button type='button'onClick={closedModal}>OK</button>
-      </div>
-        
+        <div className='content'>
+          <h1 >{data?.message.toUpperCase()}</h1>
+          <button type='button'onClick={closedModal}>OK</button>
+        </div>
       </Modal>
     </div>
   )

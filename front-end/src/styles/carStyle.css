@@ -18,6 +18,7 @@
   height: 170px;
   margin: 30px auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
 }
 
 .plan-speed {
@@ -39,4 +40,20 @@
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
+}
+
+@media (min-width: 480px) {
+  .plan-content {
+    height: 220px;
+    margin-top: 60px;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .plan-speed {
+    font-size: 1.7rem;
+  }
 }

@@ -7,14 +7,20 @@ function Header() {
   const location = useLocation()
   const url = location.pathname;
 
+  const color = 'orange'
+
   console.log(url)
 
   const verifyHome = () => {
-    if(url === '/') return 'orange'
+    if(url === '/') return color
   }
 
   const verifyPlans = () => {
-    if(url === '/plans') return 'orange'
+    if(url === '/plans') return color
+  }
+
+  const verifyCar = () => {
+    if(url === '/car') return color
   }
 
   return(
@@ -23,7 +29,7 @@ function Header() {
         <button type="button" onClick={() => navigate(-1)}><ArrowBendDownLeft size={20}  /></button>
         <li style={{color: verifyHome()}}>Cobertura</li>
         <li style={{color: verifyPlans()}}>Planos</li>
-        <li>Carrinho</li>
+        <li style={{color:verifyCar()}}>Carrinho</li>
       </ul>
     </div>
   )
