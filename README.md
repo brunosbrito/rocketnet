@@ -40,7 +40,7 @@ npm install
     cd brunonet
     cd back-end
     docker-composer up -d
-    dock exec -it brunonet bash
+    docker exec -it brunonet bash
     npm run dev
  
   ```
