@@ -33,7 +33,7 @@ Back-end:
   ```
   2 - Criar o banco de dados
   ```
-    abra outro terminal
+    abrir outro terminal
     cd brunonet
     cd back-end
     docker exec -it brunonet bash
