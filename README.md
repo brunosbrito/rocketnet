@@ -18,21 +18,6 @@ Back-end:
 > ou
 > SSH: ```git@github.com:brunosbrito/brunonet.git```
 
-## Instalando Dependências
-
-> Frontend
-```
-cd brunonet
-cd front-end
-npm install
-``` 
-> Backend
-```
-cd brunonet
-cd back-end
-npm install
-``` 
-
 ## Executando aplicação
 
 ### Para rodar o back-end:
@@ -40,8 +25,9 @@ npm install
   ```
     cd brunonet
     cd back-end
-    docker-composer up -d
+    docker-compose up -d
     docker exec -it brunonet bash
+    npm install
     npm run dev
  
   ```
@@ -50,14 +36,13 @@ npm install
     abra outro terminal
     cd brunonet
     cd back-end
-    dock exec -it brunonet bash
+    docker exec -it brunonet bash
     npm run restore
  
   ```
 
 
 ### Para rodar o front-end:
-	1 - execur o container 
   ```
     cd brunonet
     cd front-end
