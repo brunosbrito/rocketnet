@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "restore": "ts-node tests/recreateDatabase.ts",
+    "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\""
   },
   "author": "Bruno Brito",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "mocha": "^10.2.0",
     "mysql2": "^3.2.0"
   },
   "devDependencies": {

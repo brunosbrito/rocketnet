@@ -16,16 +16,16 @@ CREATE TABLE
     Brunonet.clients (
         id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
         name TEXT NOT NULL,
-        cpf TEXT NOT NULL,
-        rg TEXT NOT NULL,
-        date_of_birth DATE,
+        cpf TEXT,
+        rg TEXT,
+        date_of_birth TEXT,
         tel TEXT NOT NULL,
         email TEXT NOT NULL,
-        adress TEXT NOT NULL,
-        number INTEGER NOT NULL,
-        district TEXT NOT NULL,
-        city TEXT NOT NULL,
-        cep TEXT NOT NULL,
+        adress TEXT,
+        number TEXT,
+        district TEXT,
+        city TEXT,
+        cep TEXT,
         plan_id INTEGER,
         FOREIGN KEY (plan_id) REFERENCES Brunonet.plans (id)
     );
@@ -45,7 +45,6 @@ INSERT INTO
         tel,
         email,
         adress,
-        number,
         district,
         city,
         cep
@@ -54,14 +53,13 @@ VALUES (
         "Bruno",
         "123456789",
         "MG19612234",
-        26 / 12 / 1996,
-        "319999-9999",
-        "bruno@bruno.com",
-        "Rua Igarapva",
-        130,
-        "Cruzeiro",
-        "Betim",
-        "32661-362"
+        '26 / 12 / 1996',
+        " 319999 -9999 ",
+        " bruno @bruno.com ",
+        " Rua Igarapva ",
+        " Cruzeiro ",
+        " Betim ",
+        " 32661 -362 "
     );
 
 INSERT INTO
