@@ -14,6 +14,7 @@ Back-end:
 ## Clone o Repositório
 
 > Primerio clone o repositório atraves do comando 
+ou
 > htttps: ```https://github.com/brunosbrito/brunonet.git```
 > SSH: ```git@github.com:brunosbrito/brunonet.git```
 
