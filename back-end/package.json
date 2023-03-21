@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "restore": "ts-node tests/recreateDatabase.ts",
+    "restore": "ts-node database/recreateDatabase.ts",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\""
   },
   "author": "Bruno Brito",
