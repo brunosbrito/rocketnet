@@ -46,6 +46,7 @@ Back-end:
   ```
     cd brunonet
     cd front-end
+    npm install
     npm run dev
  
   ```
