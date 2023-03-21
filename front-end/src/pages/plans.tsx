@@ -16,7 +16,7 @@ export default function Plans() {
   const {dataPlans, planId, setPlanId} = React.useContext(MainContext)
   const navigate = useNavigate();
 
-  const getIdPlan = async ({target}: IButtonClickEvent) => {
+  const getIdPlan = ({target}: IButtonClickEvent) => {
     setPlanId(target.value)
     navigate('/car')
   };

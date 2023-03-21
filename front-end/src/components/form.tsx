@@ -27,21 +27,12 @@ export interface IClients {
 
 const formSchema = yup.object().shape({
     name: yup.string().required('NOME É OBRIGATÓRIO'),
-    cpf: yup.string().required('CPF É OBRIGATÓRIO'),
-    rg:yup.string().required('RG É OBRIGATÓRIO'),
-    date_of_birth:yup.date().required('DATA DE NASCIMENTO É OBRIGATÓRIO'),
     tel:yup.string().required('TEKEFONE É OBRIGATÓRIO'),
-    email:yup.string().email('ENSIRA UM EMAIL VÀLIDO: EMAIL@EXAMPLE.COM').required('EMAIL É OBRIGATÓRIO'),
-    adress:yup.string().required('ENDEREÇO É OBRIGATÓRIO'),
-    number:yup.number().required('NÚMERO É OBRIGATÓRIO'),
-    district:yup.string().required('BAIRRO É OBRIGATÓRIO'),
-    city:yup.string().required('CIDADE É OBRIGATÓRIO'),
-    cep:yup.string().required('CEP É OBRIGATÓRIO'),
+    email:yup.string().email('ENSIRA UM EMAIL VÀLIDO: EMAIL@EXAMPLE.COM').required('EMAIL É OBRIGATÓRIO')
   })
 
 export default function Form() {
   const {planId} = useContext(MainContext)
-  const [fieldData, setFieldData] = useState<IClients>({} as IClients)
   const navigate = useNavigate()
   
   const { register, handleSubmit, formState: {errors} } = useForm<IClients>({
@@ -50,7 +41,6 @@ export default function Form() {
 
   const postClient: SubmitHandler<IClients> = async (values: IClients) => {
     alert("cadatro realizado")
-    setFieldData(values)
     navigate('/')
 
     const data = {
@@ -64,34 +54,31 @@ export default function Form() {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)
   });
+  
+  const templateParams = {
+      from_name: values.name ,
+      message: 'Informações do novo cliente',
+      email: values.email,
+      tel: values.tel,
+    }
 
-  sendEmail()
+  emailjs.send('service_u2zvicq', 'template_gaz091d', templateParams, 'I6yIoRj7mzubrp5Bg')
+      .then((response) => {
+        console.log("EMAIL ENVIADO", response.status, response.text)
+      }, (error) => {
+        console.log("Eroor", error)
+      })  
+
   const response = await request.text();
   const json = response === "" ? {} : JSON.parse(response)
   return json
   };
 
-  const sendEmail = () =>{
-    const templateParams = {
-      from_name: fieldData.name ,
-      message: 'Informações do novo cliente',
-      email: fieldData.email,
-      tel: fieldData.tel,
-    }
-
-    emailjs.send('service_u2zvicq', 'template_gaz091d', templateParams, 'I6yIoRj7mzubrp5Bg')
-      .then((response) => {
-        console.log("EMAIL ENVIADO", response.status, response.text)
-      }, (error) => {
-        console.log("Eroor", error)
-      })
-  }
-
   return(
     <div>
       <form action='' onSubmit={handleSubmit(postClient)}>
         <label htmlFor="name" >
-          Nome
+          <p>Nome <span>*</span></p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -102,7 +89,7 @@ export default function Form() {
         {errors.name && <span>{errors.name.message}</span>}
         
         <label htmlFor="cpf">
-          CPF
+          <p>CPF</p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -113,7 +100,7 @@ export default function Form() {
         {errors.cpf && <span>{errors.cpf.message}</span>}
 
         <label htmlFor="rg">
-          RG
+         <p>RG</p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -124,7 +111,7 @@ export default function Form() {
         {errors.rg && <span>{errors.rg.message}</span>}
 
         <label htmlFor="date_of_birth">
-          Data de nascimento
+         <p>Data de nascimento</p>
           <input className='date'
           type="date"
           //@ts-ignore
@@ -136,7 +123,7 @@ export default function Form() {
         {errors.date_of_birth && <span>{errors.date_of_birth.message}</span>}
 
         <label htmlFor="tel">
-          Telefone
+          <p>Telefone <span>*</span></p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -147,7 +134,7 @@ export default function Form() {
         {errors.tel && <span>{errors.tel.message}</span>}
 
         <label htmlFor="email">
-          Email
+         <p>Email <span>*</span></p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -158,7 +145,7 @@ export default function Form() {
         {errors.email && <span>{errors.email.message}</span>}
 
         <label htmlFor="adress">
-          Endereço
+          <p>Endereço</p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -169,9 +156,9 @@ export default function Form() {
         {errors.adress && <span>{errors.adress.message}</span>}
 
         <label htmlFor="number">
-          Número
+          <p>Número</p>
         </label>
-        <input type="number"
+        <input type="text"
           //@ts-ignore
           name="number"
           id="number"
@@ -180,7 +167,7 @@ export default function Form() {
         {errors.number && <span>{errors.number.message}</span>}
 
         <label htmlFor="district">
-          Bairro
+          <p>Bairro</p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -191,7 +178,7 @@ export default function Form() {
         {errors.district && <span>{errors.district.message}</span>}
 
         <label htmlFor="city">
-          Cidade
+          <p>Cidade</p>
         </label>
         <input type="text"
           //@ts-ignore
@@ -202,7 +189,7 @@ export default function Form() {
         {errors.city && <span>{errors.city.message}</span>}
 
         <label htmlFor="cep">
-          CEP
+          <p>CEP</p>
         </label>
         <input type="text"
           //@ts-ignore

@@ -58,7 +58,7 @@ export default function Coverage() {
       <div className='cep'>
           <label htmlFor="cep">
             <p>CEP *</p>
-             <input className="cep-input" type="text" name="cep" id="cep" onChange={handleChange}/>
+             <input data-testid='cep' className="cep-input" type="text" name="cep" id="cep" onChange={handleChange}/>
           </label>
           <button type='button' onClick={verifyCep}>Buscar</button>
       </div>
