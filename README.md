@@ -1,4 +1,4 @@
-# Brunonet
+# ROCKETNET
 
 # Contexto
 Este projeto trata-se de uma aplicação full stack, onde é possivel verificar a disponibilida em sua região, escolher um plano e cadastrar-se.
@@ -23,7 +23,7 @@ Back-end:
 ### Para rodar o back-end:
 	1 - inicializar o container
   ```
-    cd brunonet
+    cd rocketnet
     cd back-end
     docker-compose up -d
     docker exec -it brunonet bash
@@ -34,7 +34,7 @@ Back-end:
   2 - Criar o banco de dados
   ```
     abrir outro terminal
-    cd brunonet
+    cd rocketnet
     cd back-end
     docker exec -it brunonet bash
     npm run restore
@@ -44,7 +44,7 @@ Back-end:
 
 ### Para rodar o front-end:
   ```
-    cd brunonet
+    cd rocketnet
     cd front-end
     npm install
     npm run dev
