@@ -1,11 +1,11 @@
 -- Active: 1679007393293@@127.0.0.1@3307
 
-DROP SCHEMA IF EXISTS Brunonet;
+DROP SCHEMA IF EXISTS Rocketnet;
 
-CREATE SCHEMA IF NOT EXISTS Brunonet;
+CREATE SCHEMA IF NOT EXISTS Rocketnet;
 
 CREATE TABLE
-    Brunonet.plans (
+    Rocketnet.plans (
         id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
         description TEXT NOT NULL,
         value DECIMAL,
@@ -13,7 +13,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    Brunonet.clients (
+    Rocketnet.clients (
         id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
         name TEXT NOT NULL,
         cpf TEXT,
@@ -27,43 +27,13 @@ CREATE TABLE
         city TEXT,
         cep TEXT,
         plan_id INTEGER,
-        FOREIGN KEY (plan_id) REFERENCES Brunonet.plans (id)
+        FOREIGN KEY (plan_id) REFERENCES Rocketnet.plans (id)
     );
 
-CREATE TABLE
-    Brunonet.coverage (
-        cep_true TEXT NOT NULL,
-        cep_false TEXT NOT NULL
-    );
+CREATE TABLE Rocketnet.coverage (cep_true TEXT NOT NULL);
 
 INSERT INTO
-    Brunonet.clients (
-        name,
-        cpf,
-        rg,
-        date_of_birth,
-        tel,
-        email,
-        adress,
-        district,
-        city,
-        cep
-    )
-VALUES (
-        "Bruno",
-        "123456789",
-        "MG19612234",
-        '26 / 12 / 1996',
-        " 319999 -9999 ",
-        " bruno @bruno.com ",
-        " Rua Igarapva ",
-        " Cruzeiro ",
-        " Betim ",
-        " 32661 -362 "
-    );
-
-INSERT INTO
-    Brunonet.plans (description, value, speed)
+    Rocketnet.plans (description, value, speed)
 VALUES (
         'COMBO FIBRA ÓPTICA 50MBPS R$49,9/MES + WI-FI + HBO MAX',
         50,
@@ -90,6 +60,4 @@ VALUES (
         300
     );
 
-INSERT INTO
-    Brunonet.coverage (cep_true, cep_false)
-VALUES ('32010-770', '32900-000')
+INSERT INTO Rocketnet.coverage (cep_true) VALUES ('32010-770') 
