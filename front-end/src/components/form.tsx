@@ -27,7 +27,7 @@ export interface IClients {
 
 const formSchema = yup.object().shape({
     name: yup.string().required('NOME É OBRIGATÓRIO'),
-    tel:yup.string().required('TEKEFONE É OBRIGATÓRIO'),
+    tel:yup.string().required('TELEFONE É OBRIGATÓRIO'),
     email:yup.string().email('ENSIRA UM EMAIL VÀLIDO: EMAIL@EXAMPLE.COM').required('EMAIL É OBRIGATÓRIO')
   })
 
@@ -40,7 +40,7 @@ export default function Forms() {
   })
 
   const postClient: SubmitHandler<IClients> = async (values: IClients) => {
-    alert("cadatro realizado")
+    alert("cadastro realizado")
     navigate('/')
 
     const data = {

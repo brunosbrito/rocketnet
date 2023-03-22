@@ -31,7 +31,6 @@ export default function Plans() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const getIdPlan = ({target}: IButtonClickEvent) => {
     setPlanId(target.value)
     navigate('/car')
@@ -67,14 +66,14 @@ export default function Plans() {
 
   const dialogModal = (json: IJson) => {
     console.log(json.message)
-    if(json.message === 'cep requerido'){
+    if(json.message === 'CEP REQUERIDO'){
       setDialog({
         title: 'Está faltando alguma coisa ai',
         description: 'Digite um cep valido'
       })
     }
 
-    if(json.message === 'CEP INVÁLIDO'){
+    if(json.message === 'CEP NÃO ENCONTRADO'){
         setDialog({
         title: 'Que pena!',
         description: 'Ainda não temos cobertura na sua região.'
