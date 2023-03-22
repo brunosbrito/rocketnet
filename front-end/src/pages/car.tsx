@@ -1,46 +1,56 @@
 import { Gauge } from "@phosphor-icons/react";
 import { useContext, useEffect, useState } from "react";
-import Form from "../components/form";
+import { Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import Forms from "../components/form";
 import Header from "../components/header";
 import MainContext from "../context/brunonetContext";
 import { IPlans } from "../context/brunonetProvider";
-import '../styles/carStyle.css'
 
 export default function Car() {
   const [dataPlan, setDataPlan] = useState<IPlans[]>([]);
   const { planId} = useContext(MainContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
-
+    if(planId === 0) {
+      alert('Ops! tem algo de errado com a Api')
+    }
     const getPlan = async (id: number) => {
-    const request = await fetch(`http://localhost:3001/plans/${id}`, {
-      method: "GET",
-      mode: "cors"
-    });
-    const response = await request.text()
-    const json = response === "" ? {} : JSON.parse(response)
-    setDataPlan(json)
+      try {
+        const request = await fetch(`http://localhost:3001/plans/${id}`, {
+          method: "GET",
+          mode: "cors"
+        });
+      const response = await request.text()
+      const json = response === "" ? {} : JSON.parse(response)
+      setDataPlan(json)
+      } catch (error) {
+        console.log(error);
+        alert('Ops! tem algo de errado com a Api')
+    }
   }
     getPlan(planId)
   },[])
 
   return (
-    <div className="car">
-      <Header />
-      <div className="plan-content">
-        <h2>Plano escolhido</h2>
-        {dataPlan.map((plan) => (
-          <div key={plan.id}>
-            <div className="plan-speed">
-              <Gauge size={32} />
-              <p>{plan.speed} Mbps</p>
-            </div>
-            <p className="desc">{plan.description}</p>
-            <p className="value">Preço: {plan.value} R$</p>
-          </div>
-        ))}
-      </div>
-      <Form />
+    <div >
+        <h2>PLANO ESCOLHIDO</h2>
+        <div className="car-bory">
+          {dataPlan.map((plan) => (
+            <Card  key={plan.id} style={{ width: '30rem' }}>
+              <Card.Header><Card.Title>{plan.speed} MEGAS</Card.Title></Card.Header>
+              <Card.Body>
+                <Card.Text>{plan.description}</Card.Text>
+                <Card.Text>R${plan.value}</Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <Button size="sm" onClick={() => navigate('/')}>Trocar plano</Button>
+              </Card.Footer>
+            </Card>
+          ))}
+        </div>
+      <Forms />
     </div>
   )
 }

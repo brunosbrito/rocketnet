@@ -24,13 +24,20 @@ function BrunonetProvider ({children}: Props){
   const [dataPlans, setDataPlans] = React.useState<IPlans[]>([])
 
   const getAllPlans = async () => {
-    const request = await fetch('http://localhost:3001/plans', {
+    try  {
+      const request = await fetch('http://localhost:3001/plans', {
       method: "GET",
       mode: "cors"
     });
     const response = await request.text()
     const json = response === "" ? {} : JSON.parse(response)
+    console.log(json)
     setDataPlans(json)
+    } catch (error) {
+      console.log(error)
+      alert('Ops! tem algo de errado com a Api')
+    }
+      
   }
 
   useEffect(() => {

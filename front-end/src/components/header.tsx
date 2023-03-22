@@ -1,37 +1,28 @@
 import { ArrowBendDownLeft } from '@phosphor-icons/react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import '../styles/headerStyle.css'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Image from 'react-bootstrap/Image';
+import logo from '../images/netflash.png'
+import salles from '../images/salles.png'
+import Nav from 'react-bootstrap/Nav';
 
 function Header() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const url = location.pathname;
-
-  const color = 'orange'
-
-  console.log(url)
-
-  const verifyHome = () => {
-    if(url === '/') return color
-  }
-
-  const verifyPlans = () => {
-    if(url === '/plans') return color
-  }
-
-  const verifyCar = () => {
-    if(url === '/car') return color
-  }
+  
 
   return(
-    <div className="header">
-      <ul>
-        <button type="button" onClick={() => navigate(-1)}><ArrowBendDownLeft size={20}  /></button>
-        <li style={{color: verifyHome()}}>Cobertura</li>
-        <li style={{color: verifyPlans()}}>Planos</li>
-        <li style={{color:verifyCar()}}>Carrinho</li>
-      </ul>
+    <div style={{borderBottom: '1px solid blue'}}>
+      <Nav className="justify-content-end" activeKey="/home">
+        <Nav.Item >
+          <Nav.Link  className='nav-item' href="/">Área do cliente</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link  className='nav-item' href="#plans">Planos</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link className='nav-item' eventKey="disabled" disabled>Suporte 0800 000 000</Nav.Link>
+        </Nav.Item>
+      </Nav>
     </div>
+     
   )
 }
 

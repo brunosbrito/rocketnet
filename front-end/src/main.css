@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box
+}
+
+h2 {
+  font-weight: 2rem;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h2 span {
+  color: #ff914d;
+  font-weight: bold;
+}
+
+.body {
+  margin: 30px auto;
+  width: 80%;
+}
+
+/*plans */
+.card-title {
+  color: #ff914d;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.card-description {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.card-value {
+  font-style: italic;
+  
+}
+
+.img-rocketnet {
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+}
+
+/* Header */
+.nav-item{
+    font-size: 1.2rem;
+  }
+
+.div-header {
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+}
+
+/* Footer */
+
+.footer {
+  border-top: 1px solid rgb(168, 168, 172);
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 50px;
+}
+
+/* Footer */
+.car-bory {
+  display: flex;
+  justify-content: center;
+}
+
+/* Form */
+
+.form-body {
+  margin: 30px auto;
+  width: 60%;
+}
+
+@media (max-width: 480px) {
+  .img-rocketnet {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav-item {
+    font-size: 0.8rem;
+  }
+  
+}
