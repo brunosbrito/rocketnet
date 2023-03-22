@@ -13,12 +13,9 @@ const valideteCoverage = async (req: Request, res: Response) => {
   const dataResult = result as ICoverage[]
 
   console.log('cep do body', isCep)
+  console.log('re',dataResult)
 
-  const filterTrue = dataResult?.filter((e)=> e.cep_true === '32010-770' )
-
-  if(filterTrue) return res.status(200).json({message: 'CEP APROVADO'});
-
-  return res.status(200).json({message: 'CEP INVÁLIDO'});
+  return res.status(200).json(dataResult);
 
 }
 

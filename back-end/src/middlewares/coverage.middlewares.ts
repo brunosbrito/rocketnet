@@ -8,8 +8,8 @@ export default function validateCoverage(
   const { cep } = req.body;
 
   const isCep = cep as string
-  if(!isCep) return res.status(400).json({message: 'cep requerido'})
-  if (isCep === '32900-000') return res.status(200).json({ message: 'CEP REPROVADO' });
+  if(!isCep) return res.status(400).json({message: 'CEP REQUERIDO'})
+  if (isCep === '32010-770') return res.status(200).json({ message: 'CEP APROVADO' });
  
   next();
 }
