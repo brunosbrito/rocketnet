@@ -4,7 +4,7 @@ import connection from "./connection";
 
 const registerClient = async (client: IClients) => {
 const clients = await connection.execute<ResultSetHeader>(`
-  INSERT INTO Brunonet.clients (
+  INSERT INTO Rocketnet.clients (
     name,
     cpf,
     rg,

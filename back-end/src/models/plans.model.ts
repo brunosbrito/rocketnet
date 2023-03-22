@@ -4,14 +4,14 @@ import connection from "./connection";
 
 const getAllPlans = async (): Promise<IPlans[]> => {
   const [plans] = await connection.execute<RowDataPacket[] & IPlans[]>(`
-  SELECT * FROM Brunonet.plans
+  SELECT * FROM Rocketnet.plans
   `)
   return plans;
 }
 
 const getById = async(id: number) : Promise<IPlans[]> => {
   const [plan] = await connection.execute<RowDataPacket[] & IPlans[]>(`
-    SELECT * FROM Brunonet.plans WHERE id = ?
+    SELECT * FROM Rocketnet.plans WHERE id = ?
   `,[id])
 
   return plan;
