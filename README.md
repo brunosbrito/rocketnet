@@ -3,10 +3,11 @@
 # Contexto
 Este projeto trata-se de uma aplicação full stack, onde é possivel verificar a disponibilida em sua região, escolher um plano e cadastrar-se.
 
-## Técnologias usadas
-
 ## CEP VÁLIDO PARA TESTAR A APLICAÇÂO
 > 32010-770
+
+
+## Técnologias usadas
 
 Front-end:
 > Desenvolvido usando: React + vite e TypeScript
