@@ -5,6 +5,9 @@ Este projeto trata-se de uma aplicação full stack, onde é possivel verificar 
 
 ## Técnologias usadas
 
+## CEP VÁLIDO PARA TESTAR A APLICAÇÂO
+> 32010-770
+
 Front-end:
 > Desenvolvido usando: React + vite e TypeScript
 
