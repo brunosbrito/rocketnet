@@ -40,7 +40,7 @@ export default function Forms() {
       plan_id: planId
     }
     
-    const request = await fetch('http://localhost:3002/client', {
+    const request = await fetch('http://localhost:3002/clients', {
     method: 'POST',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},
