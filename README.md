@@ -4,7 +4,7 @@
 Este projeto trata-se de uma aplicação full stack, onde é possivel verificar a disponibilida em sua região, escolher um plano e cadastrar-se.
 
 ## CEP VÁLIDO PARA TESTAR A APLICAÇÂO
-> 32010-770
+> 323200
 
 
 ## Técnologias usadas
@@ -30,7 +30,6 @@ Back-end:
     cd rocketnet
     cd back-end
     docker-compose up -d
-    docker exec -it brunonet bash
     npm install
     npm run dev
  
