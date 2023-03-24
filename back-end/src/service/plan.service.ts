@@ -16,9 +16,23 @@ export class PlanService {
   async createInitialData(): Promise<void> {
     try {
       const plans = [
-        { name: 'Plano A', description: 'Descrição do Plano A', price: '2' },
-        { name: 'Plano B', description: 'Descrição do Plano B', price: '2' },
-        { name: 'Plano C', description: 'Descrição do Plano C', price: '2' },
+        {
+          name: '50 MEGAS',
+          description: 'COMBO FIBRA ÓPTICA 50MBPS R$49,9/MES + WI-FI + HBO MAX',
+          price: '49,99',
+        },
+        {
+          name: '150 MEGAS',
+          description:
+            'COMBO FIBRA ÓPTICA 150MBPS R$99,9/MES + WI-FI + HBO MAX',
+          price: '99,99',
+        },
+        {
+          name: '500 MEGAS',
+          description:
+            'COMBO FIBRA ÓPTICA 500MBPS R$149,9/MES + WI-FI + HBO MAX',
+          price: '149,99',
+        },
       ];
       await Promise.all(
         plans.map(async (plan) => await this.planRepository.save(plan)),
