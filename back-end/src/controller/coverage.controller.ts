@@ -1,24 +1,19 @@
-import { Response, Request } from 'express';
-import { stringify } from 'querystring';
-import { ICoverage } from '../interfaces';
-import coverageService from '../services/coverage.service';
+import { Controller, Get, Param } from '@nestjs/common';
 
-const valideteCoverage = async (req: Request, res: Response) => {
-  const { cep } = req.body;
+import { CoverageService } from 'src/service/coverage.service';
 
-  const isCep = cep as string;
-  
+@Controller('cep')
+export class CoverageController {
+  constructor(private readonly coverageSerive: CoverageService) {}
 
-  const result = await coverageService.valideteCoverage(isCep);
-  const dataResult = result as ICoverage[]
-
-  console.log('cep do body', isCep)
-  console.log('re',dataResult)
-
-  return res.status(200).json(dataResult);
-
+  @Get()
+  async findAll() {
+    const result = await this.coverageSerive.findAll();
+    return result;
+  }
+  @Get(':cep')
+  async findCep(@Param('cep') cep: string) {
+    const result = await this.coverageSerive.findCep(cep);
+    return { exists: result };
+  }
 }
-
-const coverageController = { valideteCoverage };
-
-export default coverageController;

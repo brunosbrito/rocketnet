@@ -1,22 +1,7 @@
-import {  RowDataPacket } from "mysql2";
-import connection from "./connection";
+import { Entity, PrimaryColumn } from 'typeorm';
 
-const valideteCoverage = async (coverage: string) => {
-
-
-  if(coverage === '32010-770'){
-    const [result] = await connection.execute<RowDataPacket[]>(`
-    SELECT cep_true FROM Brunonet.coverage WHERE cep_true = ? 
-    `, [coverage])
-    console.log(result)
-    return result
-  }
-
-  return {message: "CEP NÃO ENCONTRADO"}
-  
+@Entity()
+export class CoverageModel {
+  @PrimaryColumn()
+  cep_true: string;
 }
-
-const coverageModel = { valideteCoverage };
-
-export default coverageModel;
-

@@ -1,34 +1,19 @@
-import { ResultSetHeader } from "mysql2";
-import { IClients } from "../interfaces";
-import connection from "./connection";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-const registerClient = async (client: IClients) => {
-const clients = await connection.execute<ResultSetHeader>(`
-  INSERT INTO Rocketnet.clients (
-    name,
-    cpf,
-    rg,
-    date_of_birth,
-    tel,
-    email,
-    adress,
-    number,
-    district,
-    city,
-    cep,
-    plan_id)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-`, [client.name,
-    client.cpf,
-    client.rg,
-    client.date_of_birth,
-    client.tel, client.email,
-    client.adress, client.number,
-    client.district, client.city, client.cep, client.plan_id]);
+@Entity()
+export class ClientModel {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  return clients
+  @Column()
+  name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  tel: string;
+
+  @Column()
+  plan_id?: number;
 }
-
-const clientsModel =  { registerClient };
-
-export default clientsModel;

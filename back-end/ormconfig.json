@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "db",
+  "port": 3307,
+  "username": "root",
+  "password": "password",
+  "database": "Rocketnet",
+  "entities": ["dist/**/*.model.js"],
+  "synchronize": true
+}

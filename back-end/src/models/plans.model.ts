@@ -1,22 +1,16 @@
-import { RowDataPacket } from "mysql2";
-import { IPlans } from "../interfaces";
-import connection from "./connection";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-const getAllPlans = async (): Promise<IPlans[]> => {
-  const [plans] = await connection.execute<RowDataPacket[] & IPlans[]>(`
-  SELECT * FROM Rocketnet.plans
-  `)
-  return plans;
+@Entity()
+export class PlansModel {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name?: string;
+
+  @Column()
+  description?: string;
+
+  @Column()
+  price?: string;
 }
-
-const getById = async(id: number) : Promise<IPlans[]> => {
-  const [plan] = await connection.execute<RowDataPacket[] & IPlans[]>(`
-    SELECT * FROM Rocketnet.plans WHERE id = ?
-  `,[id])
-
-  return plan;
-}
-
-const plansModel = {getAllPlans, getById};
-
-export default plansModel;

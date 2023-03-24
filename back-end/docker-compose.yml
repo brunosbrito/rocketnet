@@ -32,10 +32,3 @@ services:
       - 33070:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
-
-# # Lista de redes que os containeres irão utilizar
-# networks:
-#   # Rede padrão, criada automaticamente
-#   default:
-#     # Dá um nome específico à rede padrão
-#     name: brunonet_net
