@@ -97,11 +97,11 @@ export default function Plans() {
         <Col key={plan.id}>
           <Card>
             <Card.Header>
-            <Card.Title  className="card-title">{plan.speed} MEGAS</Card.Title>
+            <Card.Title  className="card-title">{plan.name} MEGAS</Card.Title>
           </Card.Header>
           <Card.Body>
             <Card.Text className="card-description">{plan.description}</Card.Text>
-            <Card.Text className="card-value">R${plan.value}/mês</Card.Text>
+            <Card.Text className="card-value">R${plan.price}/mês</Card.Text>
           </Card.Body>
           <Card.Footer>
             <Button value={plan.id} size="sm" disabled={isButton} onClick={getIdPlan}>Assinar</Button>
