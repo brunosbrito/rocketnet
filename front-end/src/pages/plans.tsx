@@ -17,13 +17,13 @@ interface IDialog {
 }
 
 interface IJson {
-  message: string,
+  exists: boolean,
 }
 
 export default function Plans() {
-  const {dataPlans, setCep, cep, setPlanId} = React.useContext(MainContext)
+  const {dataPlans, setPlanId} = React.useContext(MainContext)
   const navigate = useNavigate();
-  const [data, setData] =  React.useState<{message: string}>()
+  const [cep, setCep] = useState(Number)
   const [dialog, setDialog] = useState<IDialog>({} as IDialog);
   const [show, setShow] = useState(false);
   const [isButton, setIsButton] = useState(true);
@@ -38,24 +38,25 @@ export default function Plans() {
 
    const handleChange = ( {target}:React.ChangeEvent<HTMLInputElement>) => {
     const dataCep = target.value;
-    setCep(dataCep)
+    setCep(+dataCep)
   }
 
-  const body = {
-    cep
+  const test = () => {
+    verifyCep(cep)
   }
-  
-  const verifyCep = async (): Promise<void> => {
+  const verifyCep = async (cep: number): Promise<void> => {
     try {
-      const request = await fetch('http://localhost:3001/coverage', {
-    method: 'POST',
+      const request = await fetch(`http://localhost:3002/cep/${cep}`, {
+    method: 'GET',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(body)
+  
   })
 
   const response = await request.text();
   const json = response === "" ? {} : JSON.parse(response)
+  console.log('cep', cep)
+  console.log(json)
   handleShow()
   dialogModal(json)
     } catch (error) {
@@ -65,22 +66,16 @@ export default function Plans() {
   }
 
   const dialogModal = (json: IJson) => {
-    console.log(json.message)
-    if(json.message === 'CEP REQUERIDO'){
-      setDialog({
-        title: 'Está faltando alguma coisa ai',
-        description: 'Digite um cep valido'
-      })
-    }
+   
 
-    if(json.message === 'CEP NÃO ENCONTRADO'){
+    if(json.exists === false){
         setDialog({
         title: 'Que pena!',
         description: 'Ainda não temos cobertura na sua região.'
       })
     }
 
-    if(json.message === 'CEP APROVADO'){
+    if(json.exists === true){
        setDialog({
         title: 'CEP ENCONTRADO!',
         description: 'Temos cobertura na sua região e os planos serão desbloqueados'
@@ -94,8 +89,8 @@ export default function Plans() {
     <div className="row g-2" style={{marginBottom: '30px'}}>
       <h2>Digite seu CEP para verificação de cobertura e desbloqueio dos planos</h2>
       <label  className="form-label">Cep<span style={{color: 'red'}}>*</span></label>
-      <input className="form-control" placeholder="00000-000" type="text" onChange={handleChange} />
-      <Button className="form-control" onClick={verifyCep}>Verificar</Button>
+      <input className="form-control" placeholder="00000-000" type="number" onChange={handleChange} />
+      <Button className="form-control" onClick={test}>Verificar</Button>
     </div>
     <Row xs={1} md={4} lg={2} className="g-4" id="plans">
       {dataPlans.map((plan: IPlans) => (

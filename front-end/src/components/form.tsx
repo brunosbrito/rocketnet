@@ -12,16 +12,8 @@ import { Button } from 'react-bootstrap'
 export interface IClients {
   id?: number,
   name: string,
-  cpf: string,
-  rg: string
-  date_of_birth: Date,
-  tel: string,
   email: string,
-  adress: string,
-  number: number,
-  district: string,
-  city: string,
-  cep: string
+  tel: string,
   plan_id: number,
 }
 
@@ -48,7 +40,7 @@ export default function Forms() {
       plan_id: planId
     }
     
-    const request = await fetch('http://localhost:3001/clients', {
+    const request = await fetch('http://localhost:3002/client', {
     method: 'POST',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},
@@ -87,39 +79,6 @@ export default function Forms() {
           {...register('name')}
         />
         {errors.name && <span>{errors.name.message}</span>}
-
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label >CPF</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="cpf"
-          id="cpf"
-          {...register('cpf')}
-        />
-        {errors.cpf && <span>{errors.cpf.message}</span>}
-        </Form.Group>
-        
-        <Form.Group className="mb-3">
-          <Form.Label >RG</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="rg"
-          id="rg"
-          {...register('rg')}
-        />
-        {errors.rg && <span>{errors.rg.message}</span>}
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label >Data de nascimento</Form.Label>
-          <Form.Control className='date'
-          type="date"
-          //@ts-ignore
-          name="date_of_birth"
-          id="date_of_birth"
-          {...register('date_of_birth')}
-          />
         </Form.Group>
         
         <Form.Group className="mb-3">
@@ -144,55 +103,6 @@ export default function Forms() {
         {errors.email && <span>{errors.email.message}</span>}
         </Form.Group>
         
-        <Form.Group className="mb-3">
-          <Form.Label>Endereço</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="adress"
-          id="adress"
-          {...register('adress')}
-        />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Número</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="number"
-          id="number"
-          {...register('number')}
-        />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Bairro</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="district"
-          id="district"
-          {...register('district')}
-        />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Cidade</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="city"
-          id="city"
-          {...register('city')}
-        />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>CEP</Form.Label>
-          <Form.Control type="text"
-          //@ts-ignore
-          name="cep"
-          id="cep"
-          {...register('cep')}
-        />
-        </Form.Group>
         <Button className="form-control" type="submit" > FINALIZAR</Button>
     </Form>
     </div>

@@ -16,7 +16,6 @@ type Props =  {
 }
 
 export default function Home() {
-  const { cep, setCep} = useContext(MainContext);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [data, setData] =  React.useState<{message: string}>()
 
@@ -27,30 +26,6 @@ export default function Home() {
     if(data?.message === 'CEP APROVADO'){
     navigate('/plans')
     }
-  }
-
-  const handleChange = ( {target}:React.ChangeEvent<HTMLInputElement>) => {
-    const dataCep = target.value;
-    setCep(dataCep)
-  }
-
-  const body = {
-    cep
-  }
-
-  const verifyCep = async (): Promise<void> => {
-    const request = await fetch('http://localhost:3001/coverage', {
-    method: 'POST',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(body)
-  })
-
-  const response = await request.text();
-  const json = response === "" ? {} : JSON.parse(response)
-  setData(json)
-  setIsOpen(true)
-  
   }
 
   return (

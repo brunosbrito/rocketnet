@@ -1,6 +1,8 @@
+import { NumberEight } from "@phosphor-icons/react";
 import React, { FC, useEffect } from "react";
 import { useMemo, useState } from "react";
 import { json } from "react-router-dom";
+import { number } from "yup";
 import MainContext from "./brunonetContext";
 
 interface IContextData  {
@@ -13,19 +15,18 @@ type Props = {
 
 export interface IPlans {
   id?: number,
-  value: number,
+  name: string,
   description: string,
-  speed: number,
+  price: string,
 }
 
 function BrunonetProvider ({children}: Props){
-  const [cep, setCep] = useState('')
   const [planId, setPlanId] = React.useState(Number)
   const [dataPlans, setDataPlans] = React.useState<IPlans[]>([])
 
   const getAllPlans = async () => {
     try  {
-      const request = await fetch('http://localhost:3001/plans', {
+      const request = await fetch('http://localhost:3002/plans', {
       method: "GET",
       mode: "cors"
     });
@@ -45,13 +46,11 @@ function BrunonetProvider ({children}: Props){
   },[])
 
   const value = useMemo(() => ({
-    cep,
-    setCep,
     dataPlans,
     setDataPlans,
     planId,
     setPlanId,
-  }), [cep, setCep, dataPlans, setDataPlans, planId, setPlanId])
+  }), [ dataPlans, setDataPlans, planId, setPlanId])
 
   return(
     <MainContext.Provider value={value}>
